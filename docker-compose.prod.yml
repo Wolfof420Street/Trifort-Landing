@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   app:
     build:
@@ -37,7 +35,7 @@ services:
       retries: 5
 
   pgbouncer:
-    image: edoburu/pgbouncer:1.22.1
+    image: edoburu/pgbouncer:v1.25.2-p0
     container_name: trifort_pgbouncer
     restart: unless-stopped
     environment:
