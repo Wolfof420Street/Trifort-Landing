@@ -24,8 +24,8 @@ export default function Footer() {
           <h4 style={{ fontSize: "0.9rem", color: "var(--gold)", marginBottom: "15px" }}>Contact</h4>
           <ul style={{ listStyle: "none", padding: 0, fontSize: "0.85rem", color: "rgba(255,255,255,0.8)", display: "flex", flexDirection: "column", gap: "10px" }}>
             <li><i className="fas fa-map-marker-alt" style={{ marginRight: "8px", color: "var(--gold)" }}></i> Nairobi, Kenya</li>
-            <li><i className="fas fa-phone" style={{ marginRight: "8px", color: "var(--gold)" }}></i> +254 700 000 000</li>
-            <li><i className="fas fa-envelope" style={{ marginRight: "8px", color: "var(--gold)" }}></i> info@trifort.site</li>
+            <li><i className="fas fa-phone" style={{ marginRight: "8px", color: "var(--gold)" }}></i> +254 728632259 </li>
+            <li><i className="fas fa-envelope" style={{ marginRight: "8px", color: "var(--gold)" }}></i> customer.care@trifort.site</li>
           </ul>
         </div>
       </div>
