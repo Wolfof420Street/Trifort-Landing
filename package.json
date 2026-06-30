@@ -1,0 +1,42 @@
+{
+  "name": "trifort-builders",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@sentry/nextjs": "^10.62.0",
+    "bcrypt": "^6.0.0",
+    "drizzle-orm": "^0.45.2",
+    "file-type": "^16.5.4",
+    "jose": "^6.2.3",
+    "lucide-react": "^1.22.0",
+    "next": "16.2.9",
+    "nodemailer": "^9.0.1",
+    "postgres": "^3.4.9",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "recharts": "^3.9.0",
+    "sharp": "^0.35.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^17.4.2",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "puppeteer": "^25.2.1",
+    "tsx": "^4.22.4",
+    "typescript": "^5",
+    "vitest": "^4.1.9"
+  }
+}

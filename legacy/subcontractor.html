@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subcontractor Partners — TRI-FORT CONSTRUCTION</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --emerald: #1e3d2b;
+            --emerald-deep: #142a1e;
+            --emerald-light: #2a5a3e;
+            --gold: #c8701a;
+            --gold-light: #e09040;
+            --cream: #fcfaf7;
+            --sand: #e0d8c5;
+            --charcoal: #2a3a30;
+            --bg: #fcfaf7;
+        }
+        html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            cursor: none;
+        }
+
+        
+        #cursor {
+            width: 10px; height: 10px;
+            background: var(--gold); border-radius: 50%;
+            position: fixed; top: 0; left: 0;
+            pointer-events: none; z-index: 9999;
+            transform: translate(-50%,-50%);
+            transition: width .3s, height .3s, background .3s;
+        }
+        #cursorRing {
+            width: 36px; height: 36px;
+            border: 1px solid var(--gold); border-radius: 50%;
+            position: fixed; top: 0; left: 0;
+            pointer-events: none; z-index: 9998;
+            transform: translate(-50%,-50%);
+            opacity: 0.5;
+        }
+
+        
+        #progressBar {
+            position: fixed; top: 0; left: 0;
+            height: 2px; background: var(--gold);
+            z-index: 2000; width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        
+        .header {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(30,61,43,0.96);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 1px 0 var(--sand);
+            z-index: 1000;
+            transition: transform .4s ease, background .4s ease;
+        }
+        .header.hidden { transform: translateY(-100%); }
+        .header.scrolled {
+            background: rgba(252,250,247,0.97);
+            box-shadow: 0 4px 40px rgba(30,61,43,0.08);
+        }
+        .header-container {
+            max-width: 1400px; margin: 0 auto;
+            padding: 14px 40px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+         
+        .logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-img { height: 80px; width: auto; display: block; transition: opacity .4s; }
+        .logo-img-light { display: none; }
+        .logo-img-dark { display: block; }
+        .header.hero-mode .logo-img-dark { display: none; }
+        .header.hero-mode .logo-img-light { display: block; }
+        .logo-text-block { display: flex; flex-direction: column; }
+        .logo-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem; font-weight: 600;
+            letter-spacing: 3px; color: var(--emerald);
+            text-transform: uppercase; line-height: 1;
+        }
+        .logo-tagline {
+            font-size: 0.55rem; letter-spacing: 2px;
+            color: var(--gold); text-transform: uppercase;
+            font-weight: 500; margin-top: 3px;
+        }
+        .header.hero-mode .logo-name { color: rgb(255, 255, 255); }
+        .header.hero-mode .logo-tagline { color: var(--gold-light); }
+        .nav-menu { display: flex; align-items: center; gap: 4px; }
+        .nav-item {
+            font-size: 0.72rem; font-weight: 500;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: rgba(255,255,255,0.85); text-decoration: none;
+            padding: 8px 14px; border-radius: 4px;
+            border: 1px solid transparent;
+            transition: all .3s;
+        }
+        .nav-item:hover, .nav-item.active {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.25);
+        }
+
+       
+.page-hero {
+    height: 100vh;                  
+    min-height: 600px;
+    position: relative; display: flex; align-items: center;
+    overflow: hidden; padding-top: 80px;
+}
+
+.page-hero-bg {
+    position: absolute; inset: -8%;
+    background: url("construction-website/frontend/images/contractor.jpeg") center/contain;
+    animation: kenBurns 8s ease-in-out infinite alternate;
+    filter: brightness(0.55);       
+}
+
+
+@keyframes kenBurns {
+    from { transform: scale(1)    translate(0, 0); }
+    to   { transform: scale(1.15) translate(-4%, -2%); }
+}
+
+.page-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(10, 61, 30, 0.55) 0%,    
+        rgba(14, 40, 25, 0.35) 50%,   
+        rgba(6, 26, 17, 0.60) 100%    
+    );
+}
+        }
+        .page-hero-lines {
+            position: absolute; inset: 0;
+            background: repeating-linear-gradient(
+                -45deg, transparent 0px, transparent 80px,
+                rgba(200,112,26,0.04) 80px, rgba(200,112,26,0.04) 82px
+            );
+        }
+        .page-hero-content {
+            position: relative; z-index: 2;
+            max-width: 1400px; margin: 0 auto; padding: 0 60px;
+        }
+        .hero-eyebrow {
+            font-size: 0.7rem; letter-spacing: 4px; font-weight: 500;
+            color: var(--gold-light); text-transform: uppercase;
+            margin-bottom: 20px;
+            opacity: 0; transform: translateY(20px);
+            animation: fadeUp 0.7s ease 0.3s forwards;
+        }
+        .page-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            font-weight: 300; color: white; line-height: 1.05;
+            letter-spacing: 2px;
+            opacity: 0; transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.5s forwards;
+        }
+        .page-hero h1 em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+        .hero-divider {
+            width: 60px; height: 2px; background: var(--gold);
+            margin: 28px 0;
+            opacity: 0; transform: scaleX(0); transform-origin: left;
+            animation: scaleIn 0.6s ease 0.8s forwards;
+        }
+        .hero-desc {
+            font-size: 1rem; color: rgba(255,255,255,0.75);
+            font-weight: 300; letter-spacing: 0.5px;
+            max-width: 600px; line-height: 1.7;
+            opacity: 0; transform: translateY(20px);
+            animation: fadeUp 0.7s ease 1.0s forwards;
+        }
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes scaleIn {
+            to { opacity: 1; transform: scaleX(1); }
+        }
+
+       
+
+        
+        .section {
+            padding: 100px 60px;
+            position: relative;
+        }
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 300;
+            color: var(--emerald);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin-bottom: 50px;
+        }
+
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal.delay-1 { transition-delay: 0.1s; }
+        .reveal.delay-2 { transition-delay: 0.2s; }
+        .reveal.delay-3 { transition-delay: 0.3s; }
+
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .benefit-card {
+            background: rgba(215, 224, 218, 0.804);
+            padding: 40px 30px;
+            border-radius: 2px;
+            border: 1px solid var(--sand);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: var(--gold);
+            transition: height 0.4s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(30,61,43,0.08);
+        }
+        .benefit-card:hover::before {
+            height: 100%;
+        }
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        .benefit-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--emerald);
+            margin-bottom: 12px;
+        }
+        .benefit-card p {
+            color: var(--charcoal);
+            line-height: 1.7;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        
+        .requirements-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            list-style: none;
+        }
+        .requirements-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: white;
+            border: 1px solid var(--sand);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .requirements-list li:hover {
+            border-color: var(--gold);
+            background: rgba(200,112,26,0.02);
+        }
+        .req-check {
+            color: var(--gold);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .req-content h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--emerald);
+            margin-bottom: 6px;
+        }
+        .req-content p {
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+      
+        
+
+
+.section:has(.timeline-container) {
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-container {
+    margin-top: 60px;
+    position: relative;        
+    z-index: 2;                
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 40px;
+    border-radius: 12px;
+}
+
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;               
+    background: url("construction-website/frontend/images/handshake1.png") center/contain;
+    filter: brightness(0.48);
+    border-radius: 12px;
+    animation: tada 4s ease-in-out infinite;
+}
+
+@keyframes tada {
+    0%   { transform: scale(1); }
+    10%  { transform: scale(0.97) rotate(-2deg); }
+    20%  { transform: scale(1.03) rotate(2deg); }
+    30%  { transform: scale(1.03) rotate(-2deg); }
+    40%  { transform: scale(1.03) rotate(2deg); }
+    50%  { transform: scale(1.03) rotate(-1deg); }
+    60%  { transform: scale(1.03) rotate(1deg); }
+    70%  { transform: scale(1.03) rotate(-1deg); }
+    80%  { transform: scale(1.03) rotate(1deg); }
+    90%  { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.timeline-line {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+    z-index: 1;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 90px;
+    margin-bottom: 60px;
+    z-index: 1;                
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 18px;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.3);
+    z-index: 2;
+}
+
+.timeline-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: white;              
+    margin-bottom: 10px;
+}
+
+.timeline-item p {
+    color: rgba(255,255,255,0.80);
+    line-height: 1.7;
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+.timeline-duration {
+    display: inline-block;
+    background: rgba(200,112,26,0.35);
+    color: var(--gold-light);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+
+
+         
+
+        
+        .application-section {
+            background: var(--emerald);
+            padding: 100px 60px;
+            color: rgb(8, 21, 13);
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 60px auto 0;
+            background: rgb(235, 239, 236);
+            padding: 50px;
+            border-radius: 2px;
+        }
+        .form-group {
+            margin-bottom: 28px;
+        }
+        .form-group label {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--emerald);
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--sand);
+            border-radius: 2px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+            background: var(--cream);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: white;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--emerald);
+            color: white;
+            border: none;
+            border-radius: 2px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: var(--emerald-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(30,61,43,0.3);
+        }
+
+        
+        .cta-band {
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 100%);
+            padding: 80px 60px;
+            text-align: center;
+            color: white;
+        }
+        .cta-band h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .cta-band h2 em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+        .cta-band p {
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 35px;
+            opacity: 0.9;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 50px;
+            background: var(--gold);
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(200,112,26,0.4);
+        }
+
+        
+        footer {
+            background: var(--emerald-deep);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 60px 30px;
+        }
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        .footer-col h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+        .footer-col a:hover {
+            color: var(--gold-light);
+        }
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #backToTop:hover {
+            background: var(--emerald);
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Mobile improvements - Tablet size (768px and below) */
+        @media (max-width: 768px) {
+            html, body { overflow-x: hidden; width: 100%; }
+            body { cursor: auto; overflow-x: hidden; }
+            
+            /* Header & Navigation */
+            .header-container {
+                padding: 12px 16px;
+                min-height: 64px;
+            }
+            
+            .logo-wrap { gap: 8px; }
+            .logo-img { height: 52px; }
+            .logo-text-block { gap: 2px; }
+            .logo-name { font-size: 1.1rem; letter-spacing: 3px; }
+            .logo-tagline { font-size: 0.45rem; }
+
+            /* Hamburger menu button */
+            .nav-toggle {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                width: 42px;
+                height: 32px;
+                margin-left: 12px;
+                border: none;
+                background: rgba(255, 255, 255, 0.15);
+                cursor: pointer;
+                position: relative;
+                z-index: 1100;
+                border-radius: 4px;
+                padding: 6px;
+                transition: background .3s ease;
+            }
+
+            .nav-toggle:hover { background: rgba(255, 255, 255, 0.25); }
+
+            .nav-toggle span {
+                position: absolute;
+                left: 6px;
+                right: 6px;
+                height: 2.5px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 1.5px;
+                transition: transform .3s ease, opacity .3s ease, top .3s ease;
+            }
+
+            .nav-toggle span:nth-child(1) { top: 8px; }
+            .nav-toggle span:nth-child(2) { top: 15px; width: 70%; }
+
+            .header.hero-mode .nav-toggle span { background: rgba(255, 255, 255, 0.95); }
+
+            .header.nav-open .nav-toggle span:nth-child(1) {
+                top: 14px;
+                transform: rotate(45deg);
+                width: 100%;
+            }
+            .header.nav-open .nav-toggle span:nth-child(2) {
+                top: 14px;
+                transform: rotate(-45deg);
+                width: 100%;
+            }
+
+            /* Mobile dropdown menu */
+            .nav-menu {
+                position: fixed;
+                left: 0;
+                right: 0;
+                top: 64px;
+                max-height: calc(100vh - 64px);
+                overflow-y: auto;
+                padding: 12px 0;
+                background: rgba(20, 42, 30, 0.98);
+                backdrop-filter: blur(20px);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                flex-direction: column;
+                gap: 0;
+                transform: translateY(-120%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform .35s cubic-bezier(.4, 0, .2, 1), opacity .35s ease;
+                z-index: 1099;
+            }
+
+            .header.nav-open .nav-menu {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-item {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                text-align: left;
+                padding: 14px 20px;
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+                color: rgba(255, 255, 255, 0.85);
+                text-decoration: none;
+                border: none;
+                border-left: 3px solid transparent;
+                border-radius: 0;
+                transition: all .3s ease;
+                background: transparent;
+            }
+
+            .nav-item:active,
+            .nav-item:hover {
+                background: rgba(255, 255, 255, 0.08);
+                border-left-color: var(--gold);
+                color: white;
+            }
+
+            .nav-item.active {
+                background: rgba(200, 112, 26, 0.15);
+                border-left-color: var(--gold);
+                color: white;
+                font-weight: 600;
+            }
+
+            
+            .header, .header-container, .nav-menu, .hero, .page-hero, .section, .section-inner, .body, .strip, .timeline-container, .form-container, .footer, .footer-container, .footer-grid {
+                max-width: 100vw;
+                overflow-x: clip;
+            }
+
+            /* Layout */
+            .header-container,
+            .page-hero-content,
+            .breadcrumb-strip .inner,
+            .section {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            
+            .benefits-grid,
+            .requirements-list {
+                grid-template-columns: 1fr;
+            }
+            .timeline-line {
+                left: 20px;
+            }
+            .timeline-item {
+                padding-left: 70px;
+            }
+            .timeline-dot {
+                left: 8px;
+            }
+            .form-container {
+                padding: 35px 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Extra small devices (480px and below) */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 10px 12px;
+                min-height: 60px;
+            }
+
+            .logo-wrap { gap: 6px; }
+            .logo-img { height: 48px; }
+            .logo-name { font-size: 1rem; letter-spacing: 2px; }
+            .logo-tagline { font-size: 0.4rem; }
+
+            .nav-toggle {
+                width: 38px;
+                height: 30px;
+                margin-left: 8px;
+            }
+
+            .nav-menu { top: 60px; }
+
+            .nav-item {
+                padding: 12px 16px;
+                font-size: 0.7rem;
+            }
+
+            /* Layout */
+            .header-container,
+            .page-hero-content,
+            .breadcrumb-strip .inner,
+            .section {
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+            
+            .form-container {
+                padding: 30px 14px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 900px) and (orientation: landscape) {
+            html, body {
+                overflow-x: hidden;
+            }
+
+            .header-container {
+                min-height: 56px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+
+            .nav-menu {
+                top: 56px;
+                max-height: calc(100vh - 56px);
+            }
+
+            .hero,
+            .page-hero {
+                min-height: 420px !important;
+                height: auto !important;
+            }
+
+            .hero-content,
+            .page-hero-content {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+
+            .hero-title strong,
+            .page-hero h1 {
+                font-size: clamp(2rem, 5vw, 3rem);
+            }
+
+            .section,
+            .application-section,
+            .services-section,
+            .process-section,
+            .why-section,
+            .materials-section,
+            .cta-section,
+            .cta-band {
+                padding-top: 44px !important;
+                padding-bottom: 44px !important;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+    <div id="cursorRing"></div>
+    <div id="progressBar"></div>
+
+    
+    <header class="header hero-mode" id="header">
+    <div class="header-container">
+        <a href="index.html" class="logo-wrap">
+            <img class="logo-img" src="construction-website/frontend/images/logo.png" alt="TRI-FORT Construction Logo" />
+            <div class="logo-text-block">
+                <span class="logo-name">TRI-FORT CONSTRUCTION</span>
+                <span class="logo-tagline">Transparency Through Builds.</span>
+            </div>
+        </a>
+        <button class="nav-toggle" id="navToggle"><span></span><span></span></button>
+        <nav class="nav-menu" id="navMenu">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="about.html" class="nav-item">About</a>
+            <a href="services.html" class="nav-item">Services</a>
+            <a href="projects.html" class="nav-item">Projects</a>
+            <a href="estimator.html" class="nav-item">Cost Estimator</a>
+            <a href="reviews.html" class="nav-item">Reviews</a>
+            <a href="contact.html" class="nav-item">Contact</a>
+            <a href="subcontractor.html" class="nav-item active">Sub-Contractor</a>
+        </nav>
+        </div>
+    </header>
+
+    
+    <section class="page-hero">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-overlay"></div>
+        <div class="page-hero-lines"></div>
+        <div class="page-hero-content">
+            <div class="hero-eyebrow">Partnership Opportunities</div>
+            <h1>Build Your Business<br><em>Alongside Ours</em></h1>
+            <div class="hero-divider"></div>
+            <p class="hero-desc">Join a network of elite subcontractors delivering exceptional work on premier 
+                projects across Kenya. We believe in long-term partnerships built on trust, quality, and mutual growth.</p>
+        </div>
+    </section>
+
+  
+
+    
+    <section class="section">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">Why Choose TRI-FORT</div>
+                <h2 class="section-title">Partnership <em>Benefits</em></h2>
+                <div class="gold-line"></div>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card reveal delay-1">
+                    <div class="benefit-icon">1.</div>
+                    <h3>Competitive Compensation</h3>
+                    <p>Market-leading rates with prompt payment terms. We value your expertise and ensure cash flow that supports your business growth.</p>
+                </div>
+                <div class="benefit-card reveal delay-2">
+                    <div class="benefit-icon">2.</div>
+                    <h3>Consistent Pipeline</h3>
+                    <p>Access to steady, high-quality projects year-round. Our expanding client base means reliable opportunities for planning and scaling.</p>
+                </div>
+                <div class="benefit-card reveal delay-3">
+                    <div class="benefit-icon">3.</div>
+                    <h3>Professional Support</h3>
+                    <p>Dedicated project coordination and technical assistance. We handle client communications so you can focus on exceptional execution.</p>
+                </div>
+                <div class="benefit-card reveal delay-1">
+                    <div class="benefit-icon">4.</div>
+                    <h3>Premium Projects</h3>
+                    <p>Work on prestigious, well-scoped developments with realistic timelines. Projects you'll be proud to showcase in your portfolio.</p>
+                </div>
+                <div class="benefit-card reveal delay-2">
+                    <div class="benefit-icon">5.</div>
+                    <h3>Skills Development</h3>
+                    <p>Expand your capabilities through diverse project types. Training resources and mentorship for increasingly complex work.</p>
+                </div>
+                <div class="benefit-card reveal delay-3">
+                    <div class="benefit-icon">6.</div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>Set your own availability and choose projects that align with your capacity, interests, and business objectives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section" style="background: var(--sand);">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">Partner Standards</div>
+                <h2 class="section-title">What We're <em>Looking For</em></h2>
+                <div class="gold-line"></div>
+            </div>
+            <ul class="requirements-list">
+                <li class="reveal delay-1">
+                    <div class="req-check">✓</div>
+                    <div class="req-content">
+                        <h4>Proven Experience</h4>
+                        <p>Minimum 3 years in your trade with verifiable references and a portfolio of successfully completed projects.</p>
+                    </div>
+                </li>
+                <li class="reveal delay-2">
+                    <div class="req-check">✓</div>
+                    <div class="req-content">
+                        <h4>Licensing & Insurance</h4>
+                        <p>Current trade licenses, general liability coverage, and workers compensation as required by Kenyan law.</p>
+                    </div>
+                </li>
+                <li class="reveal delay-3">
+                    <div class="req-check">✓</div>
+                    <div class="req-content">
+                        <h4>Quality Commitment</h4>
+                        <p>Workmanship that meets or exceeds industry standards and all applicable building codes.</p>
+                    </div>
+                </li>
+                <li class="reveal delay-1">
+                    <div class="req-check">✓</div>
+                    <div class="req-content">
+                        <h4>Professional Equipment</h4>
+                        <p>Well-maintained tools and equipment necessary to complete work to specification and on schedule.</p>
+                    </div>
+                </li>
+                <li class="reveal delay-2">
+                    <div class="req-check">✓</div>
+                    <div class="req-content">
+                        <h4>Communication Excellence</h4>
+                        <p>Responsive to emails and calls with proactive updates on project status and any emerging issues.</p>
+                    </div>
+                </li>
+                <li class="reveal delay-3">
+                    <div class="req-check">✓</div>
+                    <div class="req-content">
+                        <h4>Safety First</h4>
+                        <p>Strong safety record and unwavering commitment to OSHA standards and site-specific protocols.</p>
+                    </div>
+                </li>
+                <li class="reveal delay-1">
+                    <div class="req-check">✓</div>
+                    <div class="req-content">
+                        <h4>Team Collaboration</h4>
+                        <p>Ability to coordinate effectively with other trades and respect shared project timelines.</p>
+                    </div>
+                </li>
+                <li class="reveal delay-2">
+                    <div class="req-check">✓</div>
+                    <div class="req-content">
+                        <h4>Problem Solving</h4>
+                        <p>Proactive approach to identifying and resolving issues before they impact the delivery schedule.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    
+    <section class="section">
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label">Getting Started</div>
+                <h2 class="section-title">Application <em>Process</em></h2>
+                <div class="gold-line"></div>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div class="timeline-item reveal delay-1">
+                    <div class="timeline-dot"></div>
+                    <h3>Submit Application</h3>
+                    <p>Complete the form below with your information, experience, and references. We review all submissions within 2 business days.</p>
+                    <span class="timeline-duration">Day 1</span>
+                </div>
+                <div class="timeline-item reveal delay-2">
+                    <div class="timeline-dot"></div>
+                    <h3>Initial Interview</h3>
+                    <p>Phone or video call to discuss your experience, availability, and partnership goals. This is also your opportunity to learn about TRI-FORT.</p>
+                    <span class="timeline-duration">Week 1</span>
+                </div>
+                <div class="timeline-item reveal delay-3">
+                    <div class="timeline-dot"></div>
+                    <h3>Verification & Site Visit</h3>
+                    <p>We verify licenses, insurance, and references. For certain trades, we may visit an active job site to observe your work firsthand.</p>
+                    <span class="timeline-duration">Week 2</span>
+                </div>
+                <div class="timeline-item reveal delay-1">
+                    <div class="timeline-dot"></div>
+                    <h3>Onboarding & First Project</h3>
+                    <p>Complete paperwork, review our standards and procedures, then get assigned to your first project—typically a smaller job to ensure mutual fit.</p>
+                    <span class="timeline-duration">Week 3-4</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="application-section">
+        <div class="section-inner" style="text-align: center;">
+            <div class="section-label" style="color: var(--gold-light);">Join Our Network</div>
+            <h2 class="section-title" style="color: white;">Ready to <em>Partner?</em></h2>
+            <div class="gold-line" style="margin: 16px auto 0;"></div>
+        </div>
+        <div class="form-container">
+            <form id="subcontractorForm">
+                <div class="form-group">
+                    <label for="company-name">Company Name *</label>
+                    <input type="text" id="company-name" name="company-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact-name">Primary Contact *</label>
+                    <input type="text" id="contact-name" name="contact-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="trade">Primary Trade/Specialty *</label>
+                    <select id="trade" name="trade" required>
+                        <option value="">Select your trade</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="hvac">HVAC</option>
+                        <option value="carpentry">Carpentry</option>
+                        <option value="masonry">Masonry</option>
+                        <option value="painting">Painting & Finishing</option>
+                        <option value="roofing">Roofing</option>
+                        <option value="flooring">Flooring</option>
+                        <option value="landscaping">Landscaping</option>
+                        <option value="concrete">Concrete & Foundation</option>
+                        <option value="steel">Structural Steel</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Years of Experience *</label>
+                    <input type="number" id="experience" name="experience" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service-area">Primary Service Area *</label>
+                    <input type="text" id="service-area" name="service-area" placeholder="e.g., Nairobi, Mombasa" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Tell Us About Your Experience</label>
+                    <textarea id="message" name="message" placeholder="Share your background, notable projects, and why you'd like to partner with TRI-FORT..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    
+    <section class="cta-band">
+        <h2>Have Questions <em>About Partnering?</em></h2>
+        <p>Our partnerships team is here to help. Reach out anytime to discuss opportunities.</p>
+        <a href="contact.html#MFORM" class="cta-btn">Contact Us</a>
+    </section>
+
+    
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
+                    <span class="logo-name" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;letter-spacing:3px;color:white;">TRI-FORT</span>
+                </div>
+                <div style="font-size:0.55rem;letter-spacing:2px;color:var(--gold-light);text-transform:uppercase;font-weight:500;margin-bottom:16px;">Transparency Through Builds.</div>
+                <p>Building Kenya's future through precision, integrity, and sustainable construction practices.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigate</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <p>Residential Builds</p>
+                <p>Commercial Projects</p>
+                <p>Industrial Construction</p>
+                <p>Restoration & Renovation</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Westlands Business Park, Nairobi, Kenya</p>
+                <a href="mailto:info@trifort.co.ke" style="display:block;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:10px;transition:color 0.3s;">info@trifort.co.ke</a>
+                <a href="tel:+254701051440" style="display:block;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:10px;transition:color 0.3s;">+254 701 051 440</a>
+                <a href="tel:+254728632259" style="display:block;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:10px;transition:color 0.3s;">+254 728 632 259</a>
+                <p>Mon–Fri 8:00am–5:00pm</p>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="https://www.instagram.com/tri_fort_construction/" target="_blank" style="display:block;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:10px;transition:color 0.3s;">Instagram</a>
+                <a href="https://www.tiktok.com/@trifortbuilders?_t=8k2L5c0HPPR&_r=1" target="_blank" style="display:block;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:10px;transition:color 0.3s;">TikTok</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 TRI-FORT CONSTRUCTION. All rights reserved.</span>
+            <span>Nairobi, Kenya</span>
+        </div>
+    </footer>
+
+    
+    <button id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursorRing');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+        function animateCursor() {
+            cursor.style.left = mx + 'px';
+            cursor.style.top = my + 'px';
+            rx += (mx - rx) * 0.12;
+            ry += (my - ry) * 0.12;
+            ring.style.left = rx + 'px';
+            ring.style.top = ry + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        document.querySelectorAll('a, button, input, select, textarea').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '20px'; cursor.style.height = '20px';
+                ring.style.width = '50px'; ring.style.height = '50px';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '10px'; cursor.style.height = '10px';
+                ring.style.width = '36px'; ring.style.height = '36px';
+            });
+        });
+
+        
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        const header = document.getElementById('header');
+
+        if (navToggle && header && navMenu) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = header.classList.toggle('nav-open');
+                navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+            
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (header.classList.contains('nav-open')) {
+                        header.classList.remove('nav-open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
+        }
+
+        
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const s = window.scrollY;
+            if (s > 80) header.classList.add('scrolled'); 
+            else header.classList.remove('scrolled');
+            if (s > 200 && s > lastScroll) header.classList.add('hidden');
+            else header.classList.remove('hidden');
+            lastScroll = s;
+            const pct = (s / (document.body.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('progressBar').style.width = pct + '%';
+            if (s > 500) document.getElementById('backToTop').classList.add('visible');
+            else document.getElementById('backToTop').classList.remove('visible');
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { 
+                if (e.isIntersecting) { 
+                    e.target.classList.add('visible'); 
+                    observer.unobserve(e.target); 
+                } 
+            });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => observer.observe(el));
+
+        
+        document.getElementById('subcontractorForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            const btn = this.querySelector('.submit-btn');
+            const orig = btn.textContent;
+            btn.disabled = true; btn.textContent = 'Submitting...';
+            try {
+                const r = await fetch('https://trifort-builders.onrender.com/api/subcontractor/submit', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(data)
+                });
+                const result = await r.json();
+                if (r.ok) {
+                    btn.textContent = 'Application Submitted!';
+                    btn.style.background = '#2a5a3e';
+                    document.getElementById('subcontractorForm').reset();
+                    setTimeout(() => { btn.disabled = false; btn.textContent = orig; btn.style.background = ''; }, 5000);
+                } else {
+                    btn.disabled = false; btn.textContent = orig;
+                    alert(result.error || (result.errors ? result.errors.join(', ') : 'Submission failed. Please try again.'));
+                }
+            } catch {
+                btn.disabled = false; btn.textContent = orig;
+                alert('Network error. Please check your connection and try again.');
+            }
+        });
+    </script>
+</body>
+</html>

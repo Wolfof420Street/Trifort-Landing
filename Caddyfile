@@ -1,0 +1,33 @@
+trifort.site, www.trifort.site, localhost {
+    # Reverse proxy to the Next.js app
+    reverse_proxy app:3000
+
+    # Serve static uploads directly from Caddy (never execute scripts)
+    handle_path /uploads/* {
+        root * /app/uploads
+        
+        # Hard block script execution attempts
+        @scripts path *.php *.phtml *.sh *.cgi *.py *.pl
+        respond @scripts "Forbidden" 403
+
+        file_server
+        
+        # Enforce static serving, prevent execution of HTML/JS
+        header X-Content-Type-Options "nosniff"
+        
+        @not_images {
+            not path *.jpg *.jpeg *.png *.webp *.avif *.heic
+        }
+        header @not_images Content-Type "application/octet-stream"
+        header @not_images Content-Disposition "attachment"
+    }
+
+    # Security Headers
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Frame-Options "DENY"
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    }
+}

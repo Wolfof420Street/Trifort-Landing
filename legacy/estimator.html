@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cost Estimator — TRI-FORT CONSTRUCTION</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --E:#1e3d2b;--ED:#0c1a10;--EM:#2a5a3e;
+  --G:#c8701a;--GL:#d9893a;
+  --BG:#fcfaf7;--CH:#2a2a2a;--W:#fff;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--BG);color:var(--CH);overflow-x:hidden;}
+
+.header{
+  position:fixed;top:0;left:0;right:0;
+  background:rgba(30,61,43,0.96);
+  backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 rgba(232,224,208,0.2);
+  z-index:1000;
+  transition:transform .4s ease,background .4s ease;
+}
+.header.hidden{transform:translateY(-100%);}
+.header.scrolled{background:rgb(9,49,26);box-shadow:0 4px 40px rgba(30,61,43,0.08);}
+.header-container{
+  max-width:1400px;margin:0 auto;
+  padding:14px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo-wrap{display:flex;align-items:center;gap:14px;text-decoration:none;}
+.logo-img{height:80px;width:auto;display:block;}
+.logo-text-block{display:flex;flex-direction:column;}
+.logo-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.4rem;font-weight:600;
+  letter-spacing:5px;color:white;
+  text-transform:uppercase;line-height:1;
+}
+.logo-tagline{
+  font-size:0.55rem;letter-spacing:2px;
+  color:var(--G);text-transform:uppercase;
+  font-weight:500;margin-top:3px;
+}
+.nav-menu{display:flex;align-items:center;gap:4px;margin-left:auto;}
+.nav-item{
+  font-size:0.72rem;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,0.85);text-decoration:none;
+  padding:8px 14px;border-radius:4px;
+  border:1px solid transparent;transition:all .3s;
+}
+.nav-item:hover,.nav-item.active{
+  background:rgba(255,255,255,0.1);
+  border-color:rgba(255,255,255,0.25);
+}
+.nav-toggle{
+  display:none;width:38px;height:30px;
+  margin-left:16px;border:none;background:transparent;
+  cursor:pointer;position:relative;z-index:1100;
+}
+.nav-toggle span{
+  position:absolute;left:4px;right:4px;height:2px;
+  background:rgba(255,255,255,0.9);
+  transition:transform .3s ease,opacity .3s ease,top .3s ease;
+}
+.nav-toggle span:nth-child(1){top:8px;}
+.nav-toggle span:nth-child(2){top:18px;}
+.header.nav-open .nav-toggle span:nth-child(1){top:13px;transform:rotate(45deg);}
+.header.nav-open .nav-toggle span:nth-child(2){top:13px;transform:rotate(-45deg);}
+
+.page-intro{
+  margin-top:108px;
+  padding:48px 40px 28px;
+  max-width:1400px;
+  margin-left:auto;margin-right:auto;
+}
+.page-eye{
+  font-size:0.65rem;letter-spacing:4px;text-transform:uppercase;
+  color:var(--G);font-weight:500;margin-bottom:14px;
+}
+.page-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4vw,3.4rem);
+  font-weight:300;color:var(--E);line-height:1.1;
+  margin-bottom:14px;
+}
+.page-title em{font-style:italic;color:var(--G);}
+.page-desc{
+  font-size:0.92rem;line-height:1.8;
+  color:rgba(42,42,42,0.72);max-width:640px;
+}
+
+.estimator-hint{
+  display:none;
+  align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  max-width:1400px;margin:0 auto 16px;
+  padding:14px 20px;
+  background:rgba(200,112,26,0.1);
+  border:1px solid rgba(200,112,26,0.25);
+  border-radius:8px;
+  font-size:0.82rem;color:var(--CH);
+}
+.estimator-hint.visible{display:flex;}
+
+.estimator-hint a,.launch-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 22px;
+  background:var(--G);color:white;
+  text-decoration:none;font-size:0.72rem;
+  font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  border-radius:4px;transition:background .3s,transform .3s;
+  border:none;cursor:pointer;
+}
+.estimator-hint a:hover,.launch-btn:hover{
+  background:var(--GL);transform:translateY(-2px);
+}
+
+.estimator-shell{
+  max-width:1400px;margin:0 auto;
+  padding:0 40px 48px;
+  min-height:calc(100vh - 280px);
+}
+.estimator-embed{
+  width:100%;
+  height:calc(100vh - 300px);
+  min-height:520px;
+  border:1px solid rgba(30,61,43,0.12);
+  border-radius:12px;
+  overflow:hidden;
+  background:var(--W);
+  box-shadow:0 20px 60px rgba(30,61,43,0.08);
+}
+.estimator-embed iframe{
+  width:100%;height:100%;border:none;display:block;
+}
+
+.estimator-fallback{
+  display:none;
+  flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  min-height:calc(100vh - 320px);
+  padding:60px 32px;
+  background:linear-gradient(160deg, var(--ED) 0%, var(--E) 100%);
+  border-radius:12px;
+  color:white;
+}
+.estimator-fallback.visible{display:flex;}
+.estimator-fallback .icon{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(200,112,26,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;color:var(--GL);
+  margin-bottom:24px;
+}
+.estimator-fallback h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:300;margin-bottom:14px;
+}
+.estimator-fallback h2 em{font-style:italic;color:var(--GL);}
+.estimator-fallback p{
+  font-size:0.9rem;line-height:1.8;
+  color:rgba(255,255,255,0.65);
+  max-width:480px;margin-bottom:32px;
+}
+.estimator-fallback .launch-btn{
+  font-size:0.78rem;padding:16px 32px;
+}
+.estimator-fallback .sub-link{
+  margin-top:18px;font-size:0.75rem;
+}
+.estimator-fallback .sub-link a{
+  color:var(--GL);text-decoration:none;
+}
+.estimator-fallback .sub-link a:hover{text-decoration:underline;}
+
+footer{
+  background:var(--ED);color:rgba(255,255,255,0.5);
+  padding:60px 40px 28px;
+}
+.footer-grid{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:40px;margin-bottom:40px;
+}
+.footer-brand .logo-name{color:white;}
+.footer-brand p{font-size:0.78rem;line-height:1.8;margin-top:12px;}
+.footer-col h4{
+  font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;
+  color:var(--GL);margin-bottom:16px;
+}
+.footer-col a,.footer-col p{
+  display:block;font-size:0.78rem;line-height:1.6;
+  color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:10px;
+}
+.footer-col a:hover{color:var(--GL);}
+.footer-bottom{
+  max-width:1400px;margin:0 auto;
+  padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-size:0.68rem;letter-spacing:1px;
+}
+
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nav-toggle{display:block;}
+  .nav-menu{
+    position:fixed;top:0;right:0;bottom:0;
+    width:min(300px,85vw);
+    flex-direction:column;align-items:stretch;
+    padding:100px 28px 40px;
+    background:rgba(12,26,16,0.98);
+    backdrop-filter:blur(20px);
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+    gap:4px;
+  }
+  .header.nav-open .nav-menu{transform:translateX(0);}
+  .nav-item{padding:14px 16px;}
+  .page-intro,.estimator-shell{padding-left:20px;padding-right:20px;}
+  .estimator-embed{display:none;}
+  .estimator-fallback.visible{display:flex;min-height:calc(100vh - 260px);}
+}
+@media(max-width:480px){
+  .logo-img{height:60px;}
+  .header-container{padding:12px 16px;}
+  .footer-grid{grid-template-columns:1fr;}
+  footer{padding:48px 20px 24px;}
+}
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-container">
+    <a href="index.html" class="logo-wrap">
+      <img class="logo-img" src="construction-website/frontend/images/logo.png" alt="TRI-FORT Construction Logo">
+      <div class="logo-text-block">
+        <span class="logo-name">TRI-FORT CONSTRUCTION</span>
+        <span class="logo-tagline">Transparency Through Builds.</span>
+      </div>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span>
+    </button>
+    <nav class="nav-menu" id="navMenu">
+      <a href="index.html" class="nav-item">Home</a>
+      <a href="about.html" class="nav-item">About</a>
+      <a href="services.html" class="nav-item">Services</a>
+      <a href="projects.html" class="nav-item">Projects</a>
+      <a href="estimator.html" class="nav-item active">Cost Estimator</a>
+      <a href="reviews.html" class="nav-item">Reviews</a>
+      <a href="contact.html" class="nav-item">Contact</a>
+      <a href="subcontractor.html" class="nav-item">Sub-contractor</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-intro">
+  <p class="page-eye">Budget Before You Build</p>
+  <h1 class="page-title">AI Construction <em>Cost Estimator</em></h1>
+  <p class="page-desc">Get a realistic budget range for your Kenyan build before speaking with our architects. Enter your scope, location, and finish level to receive investor-ready cost intelligence.</p>
+</section>
+
+<div class="estimator-hint" id="estimatorHint">
+  <span id="hintText">If the estimator doesn't appear below, open it in a new window.</span>
+  <a href="https://estimator.trifort.site/" target="_blank" rel="noopener noreferrer">
+    Open Estimator <i class="fas fa-external-link-alt"></i>
+  </a>
+</div>
+
+<div class="estimator-shell">
+  <div class="estimator-embed" id="estimatorEmbed">
+    <iframe
+      id="estimatorFrame"
+      src="https://estimator.trifort.site/"
+      title="TRI-FORT AI Construction Cost Estimator"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="clipboard-write"
+    ></iframe>
+  </div>
+
+  <div class="estimator-fallback" id="estimatorFallback">
+    <div class="icon"><i class="fas fa-calculator"></i></div>
+    <h2>Build in Kenya <em>with Confidence</em></h2>
+    <p>Premium AI-powered construction cost intelligence for diaspora and local investors. Estimate your project before requesting a formal quote from our team.</p>
+    <a href="https://estimator.trifort.site/" target="_blank" rel="noopener noreferrer" class="launch-btn">
+      Launch Cost Estimator <i class="fas fa-external-link-alt"></i>
+    </a>
+    <p class="sub-link">Already have numbers? <a href="contact.html#QFORM">Request a formal quote</a></p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo-name" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;letter-spacing:3px;">TRI-FORT</span>
+      <div style="font-size:0.55rem;letter-spacing:2px;color:var(--GL);text-transform:uppercase;font-weight:500;margin:8px 0 16px;">Transparency Through Builds.</div>
+      <p>Building Kenya's future through precision, integrity, and sustainable construction practices.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="estimator.html">Cost Estimator</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <p>Residential Builds</p>
+      <p>Commercial Projects</p>
+      <p>Industrial Construction</p>
+      <p>Restoration &amp; Renovation</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:info@trifort.co.ke">info@trifort.co.ke</a>
+      <a href="tel:+254701051440">+254 701 051 440</a>
+      <a href="contact.html#QFORM">Get a Quote</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 TRI-FORT CONSTRUCTION. All rights reserved.</span>
+    <span>Nairobi, Kenya</span>
+  </div>
+</footer>
+
+<script>
+const ESTIMATOR_URL = 'https://estimator.trifort.site/';
+const embed = document.getElementById('estimatorEmbed');
+const fallback = document.getElementById('estimatorFallback');
+const hint = document.getElementById('estimatorHint');
+const hintText = document.getElementById('hintText');
+const frame = document.getElementById('estimatorFrame');
+const mobileQuery = window.matchMedia('(max-width: 768px)');
+
+function showFallback(message) {
+  embed.style.display = 'none';
+  fallback.classList.add('visible');
+  if (message) hintText.textContent = message;
+  hint.classList.add('visible');
+}
+
+function initEstimator() {
+  if (mobileQuery.matches) {
+    showFallback('The estimator works best in a full window on mobile.');
+    return;
+  }
+
+  hint.classList.add('visible');
+
+  let embedLoaded = false;
+  const failTimer = setTimeout(() => {
+    if (!embedLoaded) {
+      showFallback('The estimator could not be embedded. Open it in a new window instead.');
+    }
+  }, 2500);
+
+  frame.addEventListener('load', () => {
+    embedLoaded = true;
+    clearTimeout(failTimer);
+  });
+
+  frame.addEventListener('error', () => {
+    clearTimeout(failTimer);
+    showFallback('The estimator could not be embedded. Open it in a new window instead.');
+  });
+}
+
+initEstimator();
+mobileQuery.addEventListener('change', () => location.reload());
+
+const hdr = document.getElementById('header');
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  hdr.classList.toggle('hidden', y > lastY + 10 && y > 200);
+  hdr.classList.toggle('scrolled', y > 80);
+  if (y < lastY) hdr.classList.remove('hidden');
+  lastY = y;
+}, { passive: true });
+
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+if (navToggle && hdr && navMenu) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = hdr.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (hdr.classList.contains('nav-open')) {
+        hdr.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+}
+</script>
+</body>
+</html>

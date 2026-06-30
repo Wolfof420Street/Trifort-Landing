@@ -1,0 +1,13 @@
+# Disable script execution
+<FilesMatch "\.(php|phtml|php3|php4|php5|pl|py|jsp|asp|html|htm|shtml|sh|cgi)$">
+    Require all denied
+</FilesMatch>
+
+# Force display as attachment for unknown types
+ForceType application/octet-stream
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|avif)$">
+    ForceType none
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
