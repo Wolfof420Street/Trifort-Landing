@@ -269,17 +269,17 @@ export default function AboutPage() {
             <div className={`reveal scale-in reveal-delay-3 ${styles.teamCard}`}>
               <div className={styles.teamImgWrap}>
                 <Image
-                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80"
+                  src="/team/DJAMILLA.jpeg"
                   alt="Head of Interior Design"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className={styles.teamInfo}>
-                <h4 className={styles.teamName}>Djamila Ndlovu</h4>
+                <h4 className={styles.teamName}>Djamilla Ndohvu</h4>
                 <div className={styles.teamRole}>Head of Interior Design</div>
                 <p className={styles.teamBio}>
-                
+                  With over six years of experience in the construction industry, Djamilla specializes in turning spaces into thoughtfully designed environments through texture, material, and detail. As Co-Director, she leads interiors from concept to completion, combining creative vision with practical execution to deliver residential, commercial, and hospitality spaces that are functional, timeless, and built to last.
                 </p>
               </div>
             </div>
