@@ -233,26 +233,8 @@ export default function AboutPage() {
             <div className={`reveal scale-in reveal-delay-1 ${styles.teamCard}`}>
               <div className={styles.teamImgWrap}>
                 <Image
-                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80"
-                  alt="Founder"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className={styles.teamInfo}>
-                <h4 className={styles.teamName}>B. Khoury</h4>
-                <div className={styles.teamRole}>Founder &amp; Chairman</div>
-                <p className={styles.teamBio}>
-                  With 25 years in the construction industry across Africa and the Middle East, B. founded TRI-FORT on the belief that great building is inseparable from great trust.
-                </p>
-              </div>
-            </div>
-
-            <div className={`reveal scale-in reveal-delay-2 ${styles.teamCard}`}>
-              <div className={styles.teamImgWrap}>
-                <Image
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80"
-                  alt="CEO"
+                  src="/team/fortune.jpeg"
+                  alt="Fortune Koome"
                   fill
                   className="object-cover"
                 />
@@ -267,11 +249,11 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className={`reveal scale-in reveal-delay-3 ${styles.teamCard}`}>
+            <div className={`reveal scale-in reveal-delay-2 ${styles.teamCard}`}>
               <div className={styles.teamImgWrap}>
                 <Image
-                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80"
-                  alt="Head of Construction"
+                  src="/team/mark.png"
+                  alt="Mark Kabugi"
                   fill
                   className="object-cover"
                 />
@@ -284,7 +266,7 @@ export default function AboutPage() {
               </div>
             </div>
             
-            <div className={`reveal scale-in reveal-delay-4 ${styles.teamCard}`}>
+            <div className={`reveal scale-in reveal-delay-3 ${styles.teamCard}`}>
               <div className={styles.teamImgWrap}>
                 <Image
                   src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80"
