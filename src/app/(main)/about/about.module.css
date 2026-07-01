@@ -1,0 +1,352 @@
+.hero {
+    height: 80vh;
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(130deg, rgba(14,40,25,0.88) 0%, rgba(14,40,25,0.4) 70%, transparent 100%);
+    z-index: 1;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    font-weight: 500;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: 2px;
+}
+
+.title em {
+    font-style: italic;
+    color: var(--gold);
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 28px 0;
+}
+
+.desc {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    max-width: 500px;
+    line-height: 1.7;
+}
+
+/* Story Section */
+.storySection {
+    padding: 120px 0;
+}
+
+.storyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.storyText p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #202923;
+    margin-bottom: 24px;
+    font-weight: 300;
+}
+
+.storyImages {
+    position: relative;
+    height: 540px;
+}
+
+.imgMain {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 80%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+}
+
+.imgSecondary {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 55%;
+    height: 60%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border: 8px solid var(--bg);
+}
+
+/* Values Section */
+.valuesSection {
+    background: var(--emerald-deep);
+    padding: 120px 0;
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+}
+
+.valueCard {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 48px 40px;
+    border-radius: 4px;
+    transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.valueCard:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(200,112,26,0.3);
+}
+
+.valueIcon {
+    width: 48px;
+    height: 48px;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.valueName {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+
+.valueText {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+}
+
+/* Stats Section */
+.statsBand {
+    padding: 80px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.statItem {
+    text-align: center;
+}
+
+.statNum {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--emerald);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* Timeline */
+.timelineSection {
+    padding: 120px 0;
+    background: white;
+}
+
+.timelineWrap {
+    position: relative;
+    max-width: 900px;
+    margin: 60px auto 0;
+    padding-left: 40px;
+    border-left: 1px solid var(--sand);
+}
+
+.timelineItem {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.timelineItem:last-child {
+    margin-bottom: 0;
+}
+
+.timelineDot {
+    position: absolute;
+    left: -46px; /* -40px padding - 6px half dot */
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px white;
+}
+
+.timelineYear {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.timelineTitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--emerald);
+    margin-bottom: 12px;
+}
+
+.timelineDesc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    font-weight: 300;
+}
+
+/* Leadership */
+.teamSection {
+    padding: 120px 0;
+}
+
+.teamGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.teamCard {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.teamImgWrap {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.teamInfo {
+    padding-top: 24px;
+}
+
+.teamName {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--emerald);
+    margin-bottom: 6px;
+}
+
+.teamRole {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.teamBio {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #666;
+    font-weight: 300;
+}
+
+/* CTA */
+.ctaBand {
+    background: var(--emerald-deep);
+    padding: 120px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaTitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-weight: 300;
+    color: white;
+    margin-bottom: 24px;
+}
+
+.ctaTitle em {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.ctaDesc {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+@media (max-width: 1024px) {
+    .storyGrid { grid-template-columns: 1fr; }
+    .valuesGrid { grid-template-columns: 1fr 1fr; }
+    .teamGrid { grid-template-columns: 1fr 1fr; }
+    .statsGrid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .valuesGrid { grid-template-columns: 1fr; }
+    .teamGrid { grid-template-columns: 1fr; }
+    .storyImages { height: 400px; }
+    .heroContent { padding: 0 20px; }
+    .timelineWrap { margin-left: 20px; padding-left: 30px; }
+    .timelineDot { left: -36px; }
+}
