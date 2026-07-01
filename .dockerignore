@@ -8,3 +8,6 @@ README.md
 .env
 legacy/
 docs/
+public/uploads/
+.sentryclirc
+sentry-artifacts/
