@@ -64,6 +64,7 @@ export default function AboutPage() {
                 src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&auto=format&fit=crop&q=60"
                 alt="Construction"
                 fill
+                unoptimized
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className={styles.whoImgMain}
               />
@@ -71,6 +72,7 @@ export default function AboutPage() {
                 src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=700&auto=format&fit=crop&q=80"
                 alt="Team"
                 fill
+                unoptimized
                 sizes="(max-width: 768px) 80vw, 40vw"
                 className={styles.whoImgSecondary}
               />
@@ -119,6 +121,7 @@ export default function AboutPage() {
                 src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80"
                 alt="Pioneer"
                 fill
+                unoptimized
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.valueCardBg}
               />
@@ -135,6 +138,7 @@ export default function AboutPage() {
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
                 alt="Create"
                 fill
+                unoptimized
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.valueCardBg}
               />
@@ -151,6 +155,7 @@ export default function AboutPage() {
                 src="https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?w=600&auto=format&fit=crop"
                 alt="Build"
                 fill
+                unoptimized
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className={styles.valueCardBg}
               />
