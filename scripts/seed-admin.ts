@@ -7,10 +7,15 @@ import { users } from "../src/db/schema";
 
 
 async function main() {
-  const adminEmail = "customer.care@trifort.site";
-  const adminPassword = "";
+  const adminEmail = process.env.ADMIN_EMAIL || "customer.care@trifort.site";
+  const adminPassword = process.env.ADMIN_PASSWORD;
 
-  console.log("Seeding admin user...");
+  if (!adminPassword) {
+    console.error("Error: ADMIN_PASSWORD environment variable is required to seed the admin user.");
+    process.exit(1);
+  }
+
+  console.log(`Seeding admin user: ${adminEmail}...`);
 
   try {
     const existingUser = await db.select().from(users).where(eq(users.email, adminEmail));
