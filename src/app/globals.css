@@ -726,15 +726,18 @@
         }
         .projects-grid {
             display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr;
-            grid-template-rows: 360px 260px;
-            gap: 14px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
         }
         .project-card {
             position: relative; overflow: hidden;
             background: var(--emerald-deep);
+            display: block;
+            text-decoration: none;
+            aspect-ratio: 4/3;
         }
-        .project-card.large { grid-row: span 2; }
+        
         .project-img {
             width: 100%; height: 100%;
             object-fit: cover;
@@ -746,34 +749,47 @@
             filter: brightness(0.5);
         }
         .project-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            padding: 30px 26px 24px;
-            background: linear-gradient(transparent, rgba(10,28,18,0.94) 60%);
-            transform: translateY(8px); transition: transform .4s;
-        }
-        .project-card:hover .project-overlay { transform: none; }
-        .project-tag {
-            font-size: 0.6rem; letter-spacing: 2.5px;
-            text-transform: uppercase; color: var(--gold-light);
-            margin-bottom: 6px;
-        }
-        .project-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem; font-weight: 600; color: white; line-height: 1.2;
-        }
-        .project-location {
-            font-size: 0.65rem; letter-spacing: 1.5px;
-            color: rgba(255,255,255,0.5); margin-top: 6px;
-        }
-        .project-link-arrow {
-            position: absolute; top: 16px; right: 16px;
-            width: 36px; height: 36px;
-            background: var(--gold); color: white;
-            display: grid; place-items: center;
-            font-size: 0.75rem; text-decoration: none;
+            position: absolute; inset: 0;
+            background: linear-gradient(to top,rgba(8,22,12,.97) 0%,rgba(8,22,12,.4) 55%,rgba(8,22,12,.05) 100%);
             opacity: 0; transition: opacity .4s;
         }
-        .project-card:hover .project-link-arrow { opacity: 1; }
+        .project-card:hover .project-overlay { opacity: 0.99; }
+        
+        .project-body {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 26px 22px; z-index: 3;
+        }
+        .project-tag {
+            font-size: 0.54rem; font-weight: 500; letter-spacing: 2.5px;
+            text-transform: uppercase; color: var(--gold);
+            margin-bottom: 7px;
+            opacity: 0; transform: translateY(9px); transition: all .3s .06s;
+        }
+        .project-card:hover .project-tag { opacity: 1; transform: translateY(0); }
+        .project-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.42rem; font-weight: 400; color: white; line-height: 1.15;
+            margin-bottom: 7px;
+        }
+        .projects-grid .project-card:nth-child(4n+1) .project-name,
+        .projects-grid .project-card:nth-child(4n+3) .project-name {
+            font-size: 1.9rem;
+        }
+        .project-location {
+            font-size: 0.55rem; font-weight: 400; letter-spacing: 1.5px;
+            text-transform: uppercase; color: rgba(255,255,255,0.46);
+            display: flex; align-items: center; gap: 6px; margin-bottom: 12px;
+        }
+        .project-link-arrow {
+            position: absolute; top: 16px; right: 16px; z-index: 4;
+            width: 36px; height: 36px;
+            border: 1px solid rgba(255,255,255,0.26);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.52);
+            transform: rotate(-45deg) scale(0.75); opacity: 0; transition: all .3s;
+        }
+        .project-card:hover .project-link-arrow { transform: rotate(0) scale(1); opacity: 1; }
+
 
         
         .stats-band {
@@ -1009,8 +1025,7 @@
             .mosaic-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 240px 240px 240px; }
             .mosaic-cell.main-cell { grid-row: span 2; }
             .services-grid { grid-template-columns: repeat(2,1fr); }
-            .projects-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 300px 260px; }
-            .project-card.large { grid-column: span 2; grid-row: span 1; }
+            .projects-grid { grid-template-columns: repeat(2,1fr); gap: 16px; }
             .stats-band-inner { grid-template-columns: repeat(2,1fr); }
             .process-steps { grid-template-columns: repeat(2,1fr); }
             .process-steps::before { display: none; }
@@ -1024,7 +1039,7 @@
             .hero-stats { display: none; }
             .mosaic-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 220px); }
             .services-grid { grid-template-columns: 1fr 1fr; }
-            .projects-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+            .projects-grid { grid-template-columns: 1fr; gap: 16px; }
             .project-card { min-height: 260px; }
             .stats-band-inner { grid-template-columns: 1fr 1fr; }
             .about-layout { grid-template-columns: 1fr; }

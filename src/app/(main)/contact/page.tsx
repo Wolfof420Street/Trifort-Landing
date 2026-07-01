@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <div style={{ paddingTop: "120px", minHeight: "80vh", background: "var(--bg)", color: "var(--charcoal)", padding: "120px 40px 100px" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "60px", alignItems: "start" }}>
-        
+
         <div>
           <span className="section-tag">Get in Touch</span>
           <h1 className="section-title">Contact Us</h1>
@@ -25,7 +25,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <div style={{ fontWeight: 600, fontSize: "0.9rem" }}>Location</div>
-                <div style={{ color: "rgba(42,58,48,0.7)", fontSize: "0.85rem" }}>Westlands, Nairobi, Kenya</div>
+                <div style={{ color: "rgba(42,58,48,0.7)", fontSize: "0.85rem" }}>Kiambu Rd, Nairobi, Kenya</div>
               </div>
             </div>
 
@@ -35,7 +35,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <div style={{ fontWeight: 600, fontSize: "0.9rem" }}>Email</div>
-                <div style={{ color: "rgba(42,58,48,0.7)", fontSize: "0.85rem" }}>info@trifort.site</div>
+                <div style={{ color: "rgba(42,58,48,0.7)", fontSize: "0.85rem" }}>customer.care@trifort.site</div>
               </div>
             </div>
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <div style={{ fontWeight: 600, fontSize: "0.9rem" }}>Phone</div>
-                <div style={{ color: "rgba(42,58,48,0.7)", fontSize: "0.85rem" }}>+254 700 000 000</div>
+                <div style={{ color: "rgba(42,58,48,0.7)", fontSize: "0.85rem" }}>+254 795 931 101</div>
               </div>
             </div>
           </div>

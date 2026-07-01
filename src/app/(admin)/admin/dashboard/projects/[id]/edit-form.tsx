@@ -145,6 +145,11 @@ export default function EditProjectForm({ project, initialImages }: { project: P
           <textarea required name="description" defaultValue={project.description} rows={5} style={{ width: '100%', padding: '10px', border: '1px solid #ccc', borderRadius: '4px' }}></textarea>
         </div>
 
+        <div>
+          <label style={{ display: 'block', marginBottom: '5px' }}>YouTube Video URL (optional)</label>
+          <input name="videoUrl" defaultValue={project.videoUrl || ''} type="text" placeholder="https://www.youtube.com/watch?v=..." style={{ width: '100%', padding: '10px', border: '1px solid #ccc', borderRadius: '4px' }} />
+        </div>
+
         {/* Existing Images */}
         <div style={{ padding: '20px', background: '#f9f9f9', border: '1px solid #eee', borderRadius: '4px' }}>
           <label style={{ display: 'block', marginBottom: '10px', fontWeight: 'bold' }}>Existing Images</label>

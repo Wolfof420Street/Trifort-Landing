@@ -45,11 +45,12 @@ export default async function ProjectsPage({
           </div>
         </div>
         <div className="projects-grid">
-          {projectsList.map((p) => (
+          {projectsList.map((p, idx) => (
             <ProjectCard 
               key={p.id} 
               project={p} 
               imageUrl={p.images[0]?.avifUrl || p.images[0]?.webpUrl || p.images[0]?.originalUrl || "/window.svg"} 
+              index={idx}
             />
           ))}
         </div>

@@ -2,8 +2,8 @@ import { db } from "@/db";
 import { projects } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { Metadata } from "next";
+import ProjectGallery from "@/components/ui/ProjectGallery";
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
@@ -63,34 +63,20 @@ export default async function ProjectDetailPage({ params }: any) {
         <h1 className="section-title" style={{ marginBottom: "20px" }}>{project.title}</h1>
         {project.location && <div style={{ fontSize: "0.8rem", color: "var(--gold)", marginBottom: "40px", textTransform: "uppercase", letterSpacing: "2px" }}>{project.location}</div>}
         
-        {(project.images as any)[0] && (
-          <div style={{ position: "relative", width: "100%", height: "60vh", marginBottom: "40px" }}>
-            <Image 
-              src={project.images[0].avifUrl || project.images[0].webpUrl || project.images[0].originalUrl} 
-              alt={(project.images as any)[0].altText || project.title}
-              fill
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          </div>
-        )}
+        <ProjectGallery images={project.images as any[]} title={project.title} description={project.description} />
 
-        <div style={{ fontSize: "1.1rem", lineHeight: "2", marginBottom: "60px", maxWidth: "800px" }}>
-          {project.description}
-        </div>
-
-        {(project.images as any).length > 1 && (
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-            {(project.images as any).slice(1).map((img: any) => (
-              <div key={img.id} style={{ position: "relative", width: "100%", height: "40vh" }}>
-                <Image 
-                  src={img.avifUrl || img.webpUrl || img.originalUrl} 
-                  alt={img.altText || project.title}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-            ))}
+        {project.videoUrl && (
+          <div style={{ marginTop: "60px", marginBottom: "40px" }}>
+            <h2 className="section-title" style={{ fontSize: "1.5rem", marginBottom: "20px" }}>Project Walkthrough</h2>
+            <div style={{ position: "relative", width: "100%", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "8px", background: "var(--emerald-deep)" }}>
+              <iframe
+                src={project.videoUrl}
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              ></iframe>
+            </div>
           </div>
         )}
       </div>

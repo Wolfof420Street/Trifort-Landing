@@ -14,6 +14,24 @@ async function requireAdmin() {
   }
 }
 
+function formatYouTubeUrl(url: string | null | undefined): string | null {
+  if (!url || !url.trim()) return null;
+  const trimmed = url.trim();
+  
+  // If already an embed, pass through
+  if (trimmed.startsWith('https://www.youtube.com/embed/')) {
+    return trimmed;
+  }
+  
+  // Match youtube.com/watch?v=ID or youtu.be/ID
+  const watchMatch = trimmed.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if (watchMatch && watchMatch[1]) {
+    return `https://www.youtube.com/embed/${watchMatch[1]}`;
+  }
+  
+  throw new Error("Invalid YouTube URL. Please provide a valid youtube.com/watch or youtu.be link.");
+}
+
 export async function toggleContactStatus(id: string, newStatus: 'new' | 'read' | 'replied') {
   await requireAdmin();
   await db.update(contacts).set({ status: newStatus }).where(eq(contacts.id, id));
@@ -83,10 +101,13 @@ export async function updateProject(id: string, formData: FormData) {
   const category = formData.get('category') as string;
   const location = formData.get('location') as string;
   const status = formData.get('status') as any;
+  const rawVideoUrl = formData.get('videoUrl') as string | null;
 
   if (!title || !slug || !description || !category) {
     throw new Error('Missing required fields');
   }
+
+  const videoUrl = formatYouTubeUrl(rawVideoUrl);
 
   await db.update(projects).set({
     title,
@@ -95,6 +116,7 @@ export async function updateProject(id: string, formData: FormData) {
     category,
     location,
     status,
+    videoUrl,
   }).where(eq(projects.id, id));
 
   revalidatePath('/projects');

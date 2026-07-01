@@ -4,9 +4,11 @@ import { eq } from "drizzle-orm";
 import { db } from "../src/db";
 import { users } from "../src/db/schema";
 
+
+
 async function main() {
-  const adminEmail = "admin@trifort.site";
-  const adminPassword = "SuperSecretPassword123!";
+  const adminEmail = "customer.care@trifort.site";
+  const adminPassword = "";
 
   console.log("Seeding admin user...");
 

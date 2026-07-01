@@ -71,6 +71,7 @@ export const projects = pgTable("projects", {
   location: text("location"),
   status: projectStatusEnum("status").default("ongoing").notNull(),
   completionDate: date("completion_date"),
+  videoUrl: text("video_url"),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 }, (table) => ({
   categoryIdx: index("idx_projects_category").on(table.category),
