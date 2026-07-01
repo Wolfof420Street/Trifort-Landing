@@ -1,352 +1,423 @@
-.hero {
-    height: 80vh;
-    min-height: 500px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+.pageHero {
+  height: 88vh; min-height: 620px;
+  position: relative; display: flex; align-items: center;
+  overflow: hidden; padding-top: 100px;
+}
+.pageHeroBg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.65) contrast(1.1);
+  z-index: 0;
+}
+.pageHeroOverlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(130deg, rgba(14,40,25,0.88) 0%, rgba(14,40,25,0.4) 70%, transparent 100%);
+  z-index: 1;
+}
+.pageHeroLines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+      -45deg, transparent 0px, transparent 80px,
+      rgba(200,112,26,0.04) 80px, rgba(200,112,26,0.04) 82px
+  );
+  z-index: 1;
+}
+.pageHeroContent {
+  position: relative; z-index: 2;
+  max-width: 1400px; margin: 0 auto; padding: 0 60px;
+  width: 100%;
+}
+.heroEyebrow {
+  font-size: 0.7rem; letter-spacing: 4px; font-weight: 500;
+  color: var(--gold-light); text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.7s ease 0.3s forwards;
+}
+.pageHero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 300; color: white; line-height: 1.05;
+  letter-spacing: 2px;
+  opacity: 0; transform: translateY(30px);
+  animation: fadeUp 0.8s ease 0.5s forwards;
+  margin: 0;
+}
+.pageHero h1 em {
+  font-style: italic; color: var(--gold);
+}
+.heroDivider {
+  width: 60px; height: 2px; background: var(--gold);
+  margin: 28px 0;
+  opacity: 0; transform: scaleX(0); transform-origin: left;
+  animation: scaleIn 0.6s ease 0.8s forwards;
+}
+.heroDesc {
+  font-size: 1rem; color: rgba(255,255,255,0.75);
+  font-weight: 300; letter-spacing: 0.5px;
+  max-width: 500px; line-height: 1.7;
+  opacity: 0; transform: translateY(20px);
+  animation: fadeUp 0.7s ease 1.0s forwards;
+  margin: 0;
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  to { opacity: 1; transform: scaleX(1); }
 }
 
-.heroOverlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(130deg, rgba(14,40,25,0.88) 0%, rgba(14,40,25,0.4) 70%, transparent 100%);
-    z-index: 1;
+.section { padding: 120px 0; }
+.sectionInner { max-width: 1400px; margin: 0 auto; padding: 0 60px; }
+.sectionLabel {
+  font-size: 0.65rem; letter-spacing: 4px; font-weight: 600;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.sectionTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  font-weight: 300; color: var(--emerald);
+  line-height: 1.15; letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+.sectionTitle em { font-style: italic; color: var(--gold); }
+.goldLine {
+  width: 50px; height: 2px;
+  background: var(--gold); margin-bottom: 40px;
 }
 
-.heroContent {
-    position: relative;
-    z-index: 2;
-    max-width: 1400px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 40px;
+.whoGrid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
 }
-
-.eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 4px;
-    font-weight: 500;
-    color: var(--gold-light);
-    text-transform: uppercase;
-    margin-bottom: 20px;
+.whoText p {
+  font-size: 0.95rem; line-height: 1.9;
+  color: #202923; margin-bottom: 20px; font-weight: 300;
 }
-
-.title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
-    font-weight: 300;
-    color: white;
-    line-height: 1.05;
-    letter-spacing: 2px;
+.kenyaCallout {
+  background: var(--emerald);
+  color: white; padding: 24px 28px;
+  border-left: 3px solid var(--gold);
+  margin-top: 32px; border-radius: 2px;
 }
-
-.title em {
-    font-style: italic;
-    color: var(--gold);
+.kenyaCallout p {
+  font-size: 0.85rem; line-height: 1.7;
+  margin: 0; color: rgba(255,255,255,0.85);
 }
-
-.divider {
-    width: 60px;
-    height: 2px;
-    background: var(--gold);
-    margin: 28px 0;
+.whoImages {
+  position: relative; height: 520px;
 }
-
-.desc {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.85);
-    font-weight: 300;
-    letter-spacing: 0.5px;
-    max-width: 500px;
-    line-height: 1.7;
+.whoImgMain {
+  position: absolute; top: 0; right: 0;
+  width: 75%; height: 75%;
+  object-fit: cover;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.18);
 }
-
-/* Story Section */
-.storySection {
-    padding: 120px 0;
+.whoImgSecondary {
+  position: absolute; bottom: 0; left: 0;
+  width: 55%; height: 60%;
+  object-fit: cover;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  border: 6px solid var(--bg);
 }
-
-.storyGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+.whoBadge {
+  position: absolute; top: 55%; right: -10px;
+  background: var(--gold);
+  color: rgb(244, 242, 242); padding: 18px 22px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(200,112,26,0.4);
 }
-
-.storyText p {
-    font-size: 1.05rem;
-    line-height: 1.9;
-    color: #202923;
-    margin-bottom: 24px;
-    font-weight: 300;
+.whoBadge .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 600; display: block; line-height: 1;
 }
-
-.storyImages {
-    position: relative;
-    height: 540px;
+.whoBadge .lbl {
+  font-size: 0.58rem; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 500;
 }
-
-.imgMain {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 80%;
-    height: 80%;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.12);
+.statsRow {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 0; margin-top: 60px;
+  border: 1px solid var(--sand);
 }
-
-.imgSecondary {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 55%;
-    height: 60%;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    border: 8px solid var(--bg);
+.statBox {
+  padding: 36px 28px; text-align: center;
+  border-right: 1px solid var(--sand);
 }
-
-/* Values Section */
-.valuesSection {
-    background: var(--emerald-deep);
-    padding: 120px 0;
-}
-
-.valuesGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-top: 60px;
-}
-
-.valueCard {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    padding: 48px 40px;
-    border-radius: 4px;
-    transition: transform 0.3s, background 0.3s, border-color 0.3s;
-}
-
-.valueCard:hover {
-    transform: translateY(-8px);
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(200,112,26,0.3);
-}
-
-.valueIcon {
-    width: 48px;
-    height: 48px;
-    color: var(--gold);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.valueName {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    color: white;
-    margin-bottom: 16px;
-    letter-spacing: 1px;
-}
-
-.valueText {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.65);
-    font-weight: 300;
-}
-
-/* Stats Section */
-.statsBand {
-    padding: 80px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-}
-
-.statsGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-}
-
-.statItem {
-    text-align: center;
-}
-
+.statBox:last-child { border-right: none; }
 .statNum {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--emerald);
-    line-height: 1;
-    margin-bottom: 8px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; font-weight: 300;
+  color: var(--emerald); line-height: 1;
+}
+.statUnit { color: var(--gold); }
+.statLbl {
+  font-size: 0.65rem; letter-spacing: 2px;
+  color: #888; text-transform: uppercase;
+  margin-top: 6px; font-weight: 500;
 }
 
-.statLabel {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    color: var(--gold);
-    text-transform: uppercase;
-    font-weight: 500;
+.valuesSection { background: var(--emerald-deep); padding: 120px 0; }
+.valuesSection .sectionTitle { color: white; margin-bottom: 24px; }
+.valuesSection .sectionLabel { color: var(--gold-light); }
+.valuesSection .goldLine { background: var(--gold-light); }
+.valuesGrid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 2px; margin-top: 60px;
+}
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.valueCard {
+  padding: 50px 40px; position: relative;
+  overflow: hidden; cursor: default;
+  transition: transform 0.4s;
+  min-height: 400px;
+}
+.valueCardBg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.valueCard:hover .valueCardBg {
+  transform: scale(1.05);
+}
+.valueCard::after {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(14, 35, 22, 0.75);
+  transition: background 0.4s; z-index: 1;
+}
+.valueCard:hover::after { background: rgba(14, 35, 22, 0.55); }
+.valueCard::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s ease; z-index: 3;
+}
+.valueCard:hover::before { transform: scaleX(1); }
+.valueCardContent { position: relative; z-index: 2; height: 100%; }
+
+.valueNum {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; font-weight: 300;
+  color: rgba(255,255,255,0.08);
+  position: absolute; top: 20px; right: 28px;
+  line-height: 1;
+  z-index: 2;
+}
+.valueName {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; font-weight: 400;
+  color: white; margin-top: 40px; margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+.valueText {
+  font-size: 0.85rem; line-height: 1.8;
+  color: rgba(255,255,255,0.6); font-weight: 300;
 }
 
-/* Timeline */
-.timelineSection {
-    padding: 120px 0;
-    background: white;
-}
-
+.timelineSection { padding: 120px 0; }
 .timelineWrap {
-    position: relative;
-    max-width: 900px;
-    margin: 60px auto 0;
-    padding-left: 40px;
-    border-left: 1px solid var(--sand);
+  position: relative; margin-top: 70px;
 }
-
+.timelineLine {
+  position: absolute; left: 50%; top: 0; bottom: 0;
+  width: 1px; background: var(--sand);
+  transform: translateX(-50%);
+}
+.timelineLineFill {
+  position: absolute; left: 50%; top: 0;
+  width: 1px; background: var(--gold);
+  transform: translateX(-50%);
+  transition: height 0.5s ease;
+}
 .timelineItem {
-    position: relative;
-    margin-bottom: 60px;
+  display: flex; align-items: flex-start;
+  margin-bottom: 70px; position: relative;
 }
-
-.timelineItem:last-child {
-    margin-bottom: 0;
+.timelineItem.left { flex-direction: row; }
+.timelineItem.right { flex-direction: row-reverse; }
+.timelineContent {
+  width: calc(50% - 50px);
+  padding: 36px 40px;
+  background: white;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+  border-radius: 2px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-
+.timelineContent:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 60px rgba(0,0,0,0.1);
+}
+.timelineItem.left .timelineContent { margin-right: auto; text-align: right; }
+.timelineItem.right .timelineContent { margin-left: auto; text-align: left; }
+.timelineDotWrap {
+  position: absolute; left: 50%;
+  transform: translateX(-50%);
+  display: flex; align-items: center; justify-content: center;
+  width: 50px; height: 50px;
+  margin-top: 28px;
+}
 .timelineDot {
-    position: absolute;
-    left: -46px; /* -40px padding - 6px half dot */
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    background: var(--gold);
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px white;
+  width: 14px; height: 14px;
+  background: var(--gold); border-radius: 50%;
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--gold);
+  z-index: 1;
 }
-
 .timelineYear {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 300;
+  color: var(--gold); line-height: 1;
+  margin-bottom: 10px;
 }
-
 .timelineTitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: var(--emerald);
-    margin-bottom: 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 500;
+  color: var(--emerald); margin-bottom: 12px;
 }
-
 .timelineDesc {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: #555;
-    font-weight: 300;
+  font-size: 0.82rem; line-height: 1.8;
+  color: #666; font-weight: 300;
 }
 
-/* Leadership */
-.teamSection {
-    padding: 120px 0;
+.quoteBand {
+  background: var(--emerald);
+  padding: 100px 60px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.quoteMark {
+  position: absolute; top: -20px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20rem; font-weight: 700;
+  color: rgba(255,255,255,0.04);
+  line-height: 1; pointer-events: none;
+  user-select: none;
+}
+.quoteText {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  font-weight: 300; font-style: italic;
+  color: white; line-height: 1.5;
+  max-width: 900px; margin: 0 auto 32px;
+  position: relative; z-index: 1;
+}
+.quoteAuthor {
+  font-size: 0.75rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold-light);
+  font-weight: 500;
 }
 
 .teamGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 60px;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 32px; margin-top: 60px;
 }
-
-.teamCard {
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
-}
-
+.teamCard { position: relative; overflow: hidden; }
 .teamImgWrap {
-    height: 400px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 4px;
+  height: 360px; overflow: hidden; position: relative;
 }
-
-.teamInfo {
-    padding-top: 24px;
+.teamImgWrap img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease;
 }
-
+.teamCard:hover .teamImgWrap img { transform: scale(1.05); }
+.teamOverlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(14,40,25,0.85) 0%, transparent 50%);
+  z-index: 1;
+}
+.teamInfo { padding: 24px 0 0; }
 .teamName {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: var(--emerald);
-    margin-bottom: 6px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 500;
+  color: var(--emerald); margin-bottom: 4px;
 }
-
 .teamRole {
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 500;
-    margin-bottom: 16px;
+  font-size: 0.7rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold);
+  font-weight: 500; margin-bottom: 12px;
 }
-
 .teamBio {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: #666;
-    font-weight: 300;
+  font-size: 0.82rem; line-height: 1.7;
+  color: #666; font-weight: 300;
 }
 
-/* CTA */
 .ctaBand {
-    background: var(--emerald-deep);
-    padding: 120px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  background: var(--emerald-deep); padding: 100px 60px;
+  text-align: center; position: relative; overflow: hidden;
 }
-
-.ctaTitle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 4vw, 4rem);
-    font-weight: 300;
-    color: white;
-    margin-bottom: 24px;
+.ctaBand::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(200,112,26,0.12) 0%, transparent 70%);
+  pointer-events: none;
 }
-
-.ctaTitle em {
-    color: var(--gold);
-    font-style: italic;
+.ctaBand h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300; color: white;
+  margin-bottom: 20px; position: relative;
 }
-
-.ctaDesc {
-    font-size: 1.1rem;
-    color: rgba(255,255,255,0.7);
-    max-width: 600px;
-    margin: 0 auto 40px;
-    line-height: 1.8;
+.ctaBand h2 em {
+  font-style: italic; color: var(--gold);
 }
-
-@media (max-width: 1024px) {
-    .storyGrid { grid-template-columns: 1fr; }
-    .valuesGrid { grid-template-columns: 1fr 1fr; }
-    .teamGrid { grid-template-columns: 1fr 1fr; }
-    .statsGrid { grid-template-columns: 1fr 1fr; }
+.ctaBand p {
+  font-size: 0.9rem; color: rgba(255,255,255,0.65);
+  max-width: 500px; margin: 0 auto 40px;
+  line-height: 1.8; position: relative;
 }
+.ctaBtn {
+  display: inline-block;
+  background: var(--gold); color: white;
+  padding: 16px 44px;
+  font-size: 0.72rem; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 500;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  position: relative;
+}
+.ctaBtn:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-@media (max-width: 768px) {
-    .valuesGrid { grid-template-columns: 1fr; }
-    .teamGrid { grid-template-columns: 1fr; }
-    .storyImages { height: 400px; }
-    .heroContent { padding: 0 20px; }
-    .timelineWrap { margin-left: 20px; padding-left: 30px; }
-    .timelineDot { left: -36px; }
+@media (max-width: 1100px) {
+  .whoGrid { grid-template-columns: 1fr; gap: 60px; }
+  .valuesGrid { grid-template-columns: 1fr 1fr; }
+  .teamGrid { grid-template-columns: 1fr 1fr; }
+  .statsRow { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .sectionInner { padding: 0 20px; }
+  .pageHeroContent { padding: 0 20px; }
+  .valuesGrid { grid-template-columns: 1fr; }
+  .teamGrid { grid-template-columns: 1fr; }
+  .statsRow { grid-template-columns: 1fr 1fr; }
+  .timelineItem.left, .timelineItem.right { flex-direction: column; }
+  .timelineContent { width: 100%; text-align: left !important; }
+  .timelineDotWrap { position: relative; left: auto; transform: none; margin: 16px 0; }
+}
+@media (max-width: 1200px) {
+  .sectionInner { padding-inline: 40px; }
+  .pageHeroContent { padding-inline: 40px; }
+  .whoGrid { gap: 48px; }
+}
+@media (max-width: 992px) {
+  .whoGrid { grid-template-columns: 1fr; gap: 40px; }
+  .whoImages { height: 420px; }
+  .section { padding: 90px 0; }
+}
+@media (max-width: 480px) {
+  .section { padding: 50px 0; }
+  .sectionInner { padding: 0 14px; }
+  .pageHeroContent { padding: 0 14px; }
+  .sectionTitle { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .whoImages { height: 300px; }
+  .valuesGrid { grid-template-columns: 1fr; }
+  .teamGrid { grid-template-columns: 1fr; }
+  .statsRow { grid-template-columns: 1fr 1fr; }
 }
