@@ -7,7 +7,7 @@ import { users } from "../src/db/schema";
 const adminsToSeed = [
   { email: "fortune@trifort.site", name: "Fortune" },
   { email: "kabugi@trifort.site", name: "Kabugi" },
-  { email: "djamilla@trifort.site", name: "Djamila" },
+  { email: "djamila@trifort.site", name: "Djamila" },
 ];
 
 async function seedAdmins() {
@@ -16,7 +16,7 @@ async function seedAdmins() {
   for (const admin of adminsToSeed) {
     // 1. Generate password at runtime
     const plainPassword = crypto.randomBytes(16).toString("hex");
-
+    
     // 2. Hash with bcrypt (12 rounds)
     const passwordHash = await bcrypt.hash(plainPassword, 12);
 

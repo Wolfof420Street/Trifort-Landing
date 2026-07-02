@@ -27,7 +27,7 @@ export default function DashboardCharts({
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px', marginTop: '32px' }}>
       
       <div style={{ background: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-        <h3 style={{ margin: '0 0 24px 0', fontSize: '1.1rem', color: 'var(--charcoal)', fontWeight: 600 }}>Projects by Status</h3>
+        <h3 style={{ margin: '0 0 20px 0', fontSize: '1.4rem', color: 'var(--charcoal)', fontWeight: 400, fontFamily: "'Cormorant Garamond', serif", borderBottom: '1px solid rgba(200,112,26,0.2)', paddingBottom: '12px' }}>Projects by Status</h3>
         <div style={{ height: '300px' }}>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
@@ -55,7 +55,7 @@ export default function DashboardCharts({
       </div>
 
       <div style={{ background: 'white', padding: '24px', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
-        <h3 style={{ margin: '0 0 24px 0', fontSize: '1.1rem', color: 'var(--charcoal)', fontWeight: 600 }}>Total Enquiries (Overview)</h3>
+        <h3 style={{ margin: '0 0 20px 0', fontSize: '1.4rem', color: 'var(--charcoal)', fontWeight: 400, fontFamily: "'Cormorant Garamond', serif", borderBottom: '1px solid rgba(200,112,26,0.2)', paddingBottom: '12px' }}>Total Enquiries (Overview)</h3>
         <div style={{ height: '300px' }}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={enquiriesByType} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>

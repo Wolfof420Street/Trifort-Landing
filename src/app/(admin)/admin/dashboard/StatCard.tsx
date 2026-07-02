@@ -25,13 +25,13 @@ export default function StatCard({ title, value, label, link, icon, color }: { t
     }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-        <h3 style={{ margin: 0, fontSize: '0.85rem', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600 }}>{title}</h3>
+        <h3 style={{ margin: 0, fontSize: '0.65rem', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 600 }}>{title}</h3>
         <div style={{ padding: '8px', background: `${color}15`, borderRadius: '8px', color: color }}>
           {icon}
         </div>
       </div>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-        <p style={{ margin: 0, fontSize: '2.5rem', fontWeight: 700, color: 'var(--charcoal)', lineHeight: 1 }}>{value}</p>
+        <p style={{ margin: 0, fontSize: '3rem', fontWeight: 300, fontFamily: "'Cormorant Garamond', serif", color: 'var(--charcoal)', lineHeight: 1 }}>{value}</p>
         <span style={{ fontSize: '0.85rem', color: '#6b7280', fontWeight: 500 }}>{label}</span>
       </div>
     </Link>

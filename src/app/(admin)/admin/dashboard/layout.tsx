@@ -1,7 +1,7 @@
 import { getCurrentUser } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
-import SidebarClient from './SidebarClient'; // We will create a small Client Component to handle current path active states
+import SidebarClient from './SidebarClient';
+import TopBar from './TopBar';
 
 export default async function AdminDashboardLayout({
   children,
@@ -14,28 +14,35 @@ export default async function AdminDashboardLayout({
     redirect('/admin/login');
   }
 
-
-
   return (
     <div style={{ 
       display: 'flex', 
       minHeight: '100vh', 
       background: 'var(--cream, #fcfaf7)',
-      fontFamily: 'var(--font-sans, system-ui, sans-serif)',
+      fontFamily: "'Montserrat', sans-serif",
       color: 'var(--charcoal, #2a3a30)'
     }}>
       <SidebarClient user={user} />
 
-      {/* Main Content Area */}
-      <main style={{ 
+      {/* Main Content Wrapper */}
+      <div style={{ 
         flex: 1, 
-        padding: '32px 48px', 
-        overflowY: 'auto',
-        display: 'flex',
-        flexDirection: 'column'
+        display: 'flex', 
+        flexDirection: 'column', 
+        minWidth: 0 
       }}>
-        {children}
-      </main>
+        <TopBar />
+        
+        <main style={{ 
+          flex: 1, 
+          padding: '0 48px 48px 48px', 
+          overflowY: 'auto',
+          display: 'flex',
+          flexDirection: 'column'
+        }}>
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

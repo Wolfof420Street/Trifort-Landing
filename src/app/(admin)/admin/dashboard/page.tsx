@@ -1,12 +1,10 @@
 import { db } from '@/db';
 import { contacts, quotes, subcontractors, reviews, projects, analyticsEvents } from '@/db/schema';
 import { count, eq } from 'drizzle-orm';
-import Link from 'next/link';
 import DashboardCharts from './DashboardCharts';
 import { 
   FolderKanban, 
   Users, 
-  FileText, 
   MessageSquare,
   TrendingUp
 } from 'lucide-react';
@@ -23,7 +21,7 @@ export default async function AdminDashboard() {
     [{ count: pendingSubs }],
     [{ count: pendingReviews }],
     [{ count: totalVisits }],
-    allProjects
+    projectStatusCounts
   ] = await Promise.all([
     db.select({ count: count() }).from(projects),
     db.select({ count: count() }).from(contacts).where(eq(contacts.status, 'new')),
@@ -31,12 +29,12 @@ export default async function AdminDashboard() {
     db.select({ count: count() }).from(subcontractors).where(eq(subcontractors.status, 'pending')),
     db.select({ count: count() }).from(reviews).where(eq(reviews.status, 'pending')),
     db.select({ count: count() }).from(analyticsEvents).where(eq(analyticsEvents.eventType, 'pageview')),
-    db.query.projects.findMany()
+    db.select({ status: projects.status, count: count() }).from(projects).groupBy(projects.status)
   ]);
 
   // Aggregate data for charts
-  const statusCounts = allProjects.reduce((acc, p) => {
-    acc[p.status] = (acc[p.status] || 0) + 1;
+  const statusCounts = projectStatusCounts.reduce((acc, row) => {
+    acc[row.status] = Number(row.count);
     return acc;
   }, {} as Record<string, number>);
 
@@ -55,8 +53,26 @@ export default async function AdminDashboard() {
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
       <div style={{ marginBottom: '32px' }}>
-        <h1 style={{ margin: '0 0 8px 0', color: 'var(--charcoal)', fontSize: '2rem', fontWeight: 700 }}>Dashboard Overview</h1>
-        <p style={{ margin: 0, color: '#6b7280', fontSize: '0.95rem' }}>Welcome back. Here is what is happening with your business today.</p>
+        <div style={{ 
+          fontSize: '0.6rem', 
+          letterSpacing: '3px', 
+          textTransform: 'uppercase', 
+          color: 'var(--gold, #c8701a)',
+          fontWeight: 600,
+          marginBottom: '8px'
+        }}>
+          At a Glance
+        </div>
+        <h1 style={{ 
+          margin: 0, 
+          color: 'var(--charcoal, #2a3a30)',
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: '2.5rem',
+          fontWeight: 600,
+          lineHeight: 1
+        }}>
+          Overview
+        </h1>
       </div>
       
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
